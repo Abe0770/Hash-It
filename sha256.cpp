@@ -152,7 +152,7 @@ void blockComp(int N, vector<string> M, vector<string> &W, vector<string> &T) {
 		H[5] = res6.to_string();
 		H[6] = res7.to_string();
 		H[7] = res8.to_string();
-
+		W.clear();
 	}
 }
 
