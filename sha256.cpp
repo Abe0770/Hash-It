@@ -121,16 +121,14 @@ void blockComp(int N, vector<string> M, vector<string> &W, vector<string> &T) {
 		    bitset<32> t1 = toULong(h) + toULong(choose(e, f, g)) + toULong(SIGMA(e, 6, 11, 25)) + toULong(K[t]) + toULong(W[t]);
 		    bitset<32> t2 = toULong(SIGMA(a, 2, 13, 22)) + toULong(maj(a, b, c));
 		    string T1 = t1.to_string(), T2 = t2.to_string();
-		    bitset<32> RES1 = toULong(d) + toULong(T1);
-		    bitset<32> RES2 = toULong(T1) + toULong(T2);
 		    h = g;
 		    g = f;
 		    f = e;
-		    e = RES1.to_string();
+		    e = bitset<32> (toULong(d) + toULong(T1)).to_string();
 		    d = c;
 		    c = b;
 		    b = a;
-		    a = RES2.to_string();
+		    a = bitset<32> (toULong(T1) + toULong(T2)).to_string();
 		}
 		H[0] = bitset<32>(toULong(a) + toULong(H[0])).to_string();
 		H[1] = bitset<32>(toULong(b) + toULong(H[1])).to_string();
