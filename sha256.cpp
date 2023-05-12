@@ -157,6 +157,7 @@ void blockComp(int N, vector<string> M, vector<string> &W, vector<string> &T) {
 }
 
 void display() {
+	cout << endl << "Hash value : ";
 	for(int i = 0 ; i < 8 ; i++){
 		bitset<32> bits(H[i]);
 		stringstream ss;
@@ -164,6 +165,7 @@ void display() {
 		string val(ss.str());
 		cout << val;
 	}
+	cout << endl;
 }
 
 int main() {
