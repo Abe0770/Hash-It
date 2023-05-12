@@ -10,7 +10,6 @@ vector<string>H={"01101010000010011110011001100111",
                  "10011011000001010110100010001100",
                  "00011111100000111101100110101011",
                  "01011011111000001100110100011001"};
-
 vector<string>K={"01000010100010100010111110011000", "01110001001101110100010010010001", "10110101110000001111101111001111", "11101001101101011101101110100101",
                  "00111001010101101100001001011011", "01011001111100010001000111110001", "10010010001111111000001010100100", "10101011000111000101111011010101",
                  "11011000000001111010101010011000", "00010010100000110101101100000001", "00100100001100011000010110111110", "01010101000011000111110111000011",
@@ -39,21 +38,18 @@ int calcBits(int size) {
 
 string binConv(string st, int bits) {
 	string binStr;
-	for(int i = 0 ; i < st.size() ; i++) {
+	for(int i = 0 ; i < st.size() ; i++)
 		binStr.append(bitset<8>(st[i]).to_string());
-	}
 	binStr.append("1");
-	for(int i = (st.size()*8) + 1 ; i < bits - 64; i++) {
+	for(int i = (st.size()*8) + 1 ; i < bits - 64; i++)
 		binStr.append("0");
-	}
 	binStr.append(bitset<64>(st.size()*8).to_string());
 	return binStr;
 }
 
 void mSplit(vector <string> &M, string binStr, int N) {
-	for(int i = 0 ; i < N*16; i++) {
+	for(int i = 0 ; i < N*16; i++)
 		M.push_back(binStr.substr(32*i, 32));
-	}
 }
 
 ulong toULong(string str) {
@@ -136,22 +132,14 @@ void blockComp(int N, vector<string> M, vector<string> &W, vector<string> &T) {
 		    b = a;
 		    a = RES2.to_string();
 		}
-		bitset<32> res1 = toULong(a) + toULong(H[0]);
-		bitset<32> res2 = toULong(b) + toULong(H[1]);
-		bitset<32> res3 = toULong(c) + toULong(H[2]);
-		bitset<32> res4 = toULong(d) + toULong(H[3]);
-		bitset<32> res5 = toULong(e) + toULong(H[4]);
-		bitset<32> res6 = toULong(f) + toULong(H[5]);
-		bitset<32> res7 = toULong(g) + toULong(H[6]);
-		bitset<32> res8 = toULong(h) + toULong(H[7]);
-		H[0] = res1.to_string();
-		H[1] = res2.to_string();
-		H[2] = res3.to_string();
-		H[3] = res4.to_string();
-		H[4] = res5.to_string();
-		H[5] = res6.to_string();
-		H[6] = res7.to_string();
-		H[7] = res8.to_string();
+		H[0] = bitset<32>(toULong(a) + toULong(H[0])).to_string();
+		H[1] = bitset<32>(toULong(b) + toULong(H[1])).to_string();
+		H[2] = bitset<32>(toULong(c) + toULong(H[2])).to_string();
+		H[3] = bitset<32>(toULong(d) + toULong(H[3])).to_string();
+		H[4] = bitset<32>(toULong(e) + toULong(H[4])).to_string();
+		H[5] = bitset<32>(toULong(f) + toULong(H[5])).to_string();
+		H[6] = bitset<32>(toULong(g) + toULong(H[6])).to_string();
+		H[7] = bitset<32>(toULong(h) + toULong(H[7])).to_string();
 		W.clear();
 	}
 }
