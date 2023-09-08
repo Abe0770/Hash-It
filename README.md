@@ -1,2 +1,2 @@
 # sha256
-SHA-256 implementation using c++
+Implementation of SHA-256 using C++.
