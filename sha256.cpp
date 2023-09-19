@@ -13,8 +13,7 @@ using namespace std;
 class SHA256 {
 private:
     vector<string> H;
-
-	vector<string> K;
+    vector<string> K;
 
     int calcBits(int size) {
         int bits = 512;
