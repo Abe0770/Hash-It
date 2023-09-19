@@ -12,20 +12,19 @@ using namespace std;
 
 class SHA256 {
 private:
-    vector<string> H;
-    vector<string> K;
+	vector<string> H;
+	vector<string> K;
 
-    int calcBits(int size) {
-        int bits = 512;
+	int calcBits(int size) {
+		int bits = 512;
 		size = 8*size;
 		int rounded = ((size / 512) + 1) * 512;
 		if(size >= rounded - 64) 
 			rounded += 512;
 		return rounded;
+	}
 
-    }
-
-    string binConv(string st, int bits) {
+	string binConv(string st, int bits) {
 		string binStr;
 		for(int i = 0 ; i < st.size() ; i++) {
 			binStr.append(bitset<8>(st[i]).to_string());
@@ -36,18 +35,18 @@ private:
 		}
 		binStr.append(bitset<64>(st.size()*8).to_string());
 		return binStr;
-    }
+	}
 
-    void mSplit(vector<string> &M, string binStr, int N) {
+	void mSplit(vector<string> &M, string binStr, int N) {
 		for(int i = 0 ; i < N*16; i++) {
 			M.push_back(binStr.substr(32*i, 32));
 		}
-    }
+	}
 
-    ulong toULong(string str) {
-        bitset<32> bits(str);
-    	return bits.to_ulong();
-    }
+	ulong toULong(string str) {
+		bitset<32> bits(str);
+		return bits.to_ulong();
+	}
 
 	string sigma(string s1, int a1, int a2, int a3) {
 		string s2 = s1, s3 = s1;
@@ -66,43 +65,43 @@ private:
 		return sigma;
 	}
 
-    string SIGMA(string s1, int a1, int a2, int a3) {
-        string s2 = s1, s3 = s1;
-    
+	string SIGMA(string s1, int a1, int a2, int a3) {
+		string s2 = s1, s3 = s1;
+
 		rotate(s1.rbegin(), s1.rbegin() + a1, s1.rend());
 		string rotRa = s1;
-		
+
 		rotate(s2.rbegin(), s2.rbegin() + a2, s2.rend());
 		string rotRb = s2;
-		
+
 		rotate(s3.rbegin(), s3.rbegin() + a3, s3.rend());
 		string rotRc = s3;
-		
+
 		bitset<32> sum = toULong(rotRa) ^ toULong(rotRb) ^ toULong(rotRc);
 		string SIGMA = sum.to_string();
 		return SIGMA;
-    }
+	}
 
-    string choose(string e, string f, string g) {
-        string st;
+	string choose(string e, string f, string g) {
+		string st;
 		for(int i = 0 ; i < 32 ; i++) {
-		    if(e[i] == '0')
-		        st.append(1, g[i]);
-		    else
-		        st.append(1, f[i]);
+			if(e[i] == '0')
+				st.append(1, g[i]);
+			else
+				st.append(1, f[i]);
 		}
 		return st;
-    }
+	}
 
-    string maj(string a, string b, string c) {
-        string st;
+	string maj(string a, string b, string c) {
+		string st;
 		for(int i = 0 ; i < 32 ; i++)
-		    a[i] == b[i] ? st.append(1, a[i]) : (b[i] == c[i] ? st.append(1, b[i]) : st.append(1, c[i]));
+			a[i] == b[i] ? st.append(1, a[i]) : (b[i] == c[i] ? st.append(1, b[i]) : st.append(1, c[i]));
 		return st;
-    }
+	}
 
-    void blockComp(int N, vector<string> M, vector<string> &W, vector<string> &T) {
-	    for(int i = 0; i < N; i++) {
+	void blockComp(int N, vector<string> M, vector<string> &W, vector<string> &T) {
+		for(int i = 0; i < N; i++) {
 			copy(&M[16*i], &M[(16*i)+16], back_inserter(W));
 			for(int t = 16; t < 64; t++) {
 				bitset<32> result = toULong(W[t-16]) + toULong(sigma(W[t-15], 7, 18, 3)) + toULong(W[t-7]) + toULong(sigma(W[t-2], 17, 19, 10));
@@ -142,12 +141,11 @@ private:
 			H[7] = res8.to_string();
 			W.clear();
 		}
-
-    }
+	}
 
 public:
-    SHA256() {
-        H= {"01101010000010011110011001100111",
+	SHA256() {
+		H= {"01101010000010011110011001100111",
 			"10111011011001111010111010000101",
 			"00111100011011101111001101110010",
 			"10100101010011111111010100111010",
@@ -172,49 +170,49 @@ public:
 			"00111001000111000000110010110011", "01001110110110001010101001001010", "01011011100111001100101001001111", "01101000001011100110111111110011",
 			"01110100100011111000001011101110", "01111000101001010110001101101111", "10000100110010000111100000010100", "10001100110001110000001000001000",
 			"10010000101111101111111111111010", "10100100010100000110110011101011", "10111110111110011010001111110111", "11000110011100010111100011110010"};
-    }
+	}
 
-    void hashString(string st) {
-        int size = st.size();
-        if (size * 8 > (pow(2, 64) - 64)) {
-            cout << "Maximum size exceeded!";
-            exit(0);
-        }
-        int bits = 512;
-        bits = calcBits(size);
+	void hashString(string st) {
+		int size = st.size();
+		if (size * 8 > (pow(2, 64) - 64)) {
+			cout << "Maximum size exceeded!";
+			exit(0);
+		}
+		int bits = 512;
+		bits = calcBits(size);
 
-        string binStr = binConv(st, bits);
+		string binStr = binConv(st, bits);
 
-        int N = bits / 512;
-        vector<string> M;
+		int N = bits / 512;
+		vector<string> M;
 
-        mSplit(M, binStr, N);
+		mSplit(M, binStr, N);
 
-        vector<string> W;
-        vector<string> T;
-        blockComp(N, M, W, T);
-        display();
-    }
+		vector<string> W;
+		vector<string> T;
+		blockComp(N, M, W, T);
+		display();
+	}
 
-    void display() {
-        cout << endl << "Hash value : ";
-        for (int i = 0; i < 8; i++) {
-            bitset<32> bits(H[i]);
-            stringstream ss;
-            ss << hex << setw(8) << setfill('0') << bits.to_ulong();
-            string val(ss.str());
-            cout << val;
-        }
-        cout << endl;
-    }
+	void display() {
+		cout << endl << "Hash value : ";
+		for (int i = 0; i < 8; i++) {
+			bitset<32> bits(H[i]);
+			stringstream ss;
+			ss << hex << setw(8) << setfill('0') << bits.to_ulong();
+			string val(ss.str());
+			cout << val;
+		}
+		cout << endl;
+	}
 };
 
 int main() {
-    SHA256 sha256;
-    string st;
-    cout << "Enter the string : ";
-    getline(cin, st);
-    sha256.hashString(st);
-    return 0;
+	SHA256 sha256;
+	string st;
+	cout << "Enter the string : ";
+	getline(cin, st);
+	sha256.hashString(st);
+	return 0;
 }
 
