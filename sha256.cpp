@@ -187,7 +187,7 @@ public:
         vector<string> M;
 
         mSplit(M, binStr, N);
-
+		
         vector<string> W;
         vector<string> T;
         blockComp(N, M, W, T);
