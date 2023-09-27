@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <sstream>
 #include <cstdlib>
+#include <termios.h> 
+#include <unistd.h>
 
 using namespace std;
 
@@ -195,7 +197,7 @@ public:
     }
 
     void display() {
-        cout << endl << "Hash value : ";
+        cout << '\n' << "Hash value : ";
         for (int i = 0; i < 8; i++) {
             bitset<32> bits(H[i]);
             stringstream ss;
@@ -203,11 +205,33 @@ public:
             string val(ss.str());
             cout << val;
         }
-        cout << endl;
+        cout << '\n';
     }
 };
 
+int clear_icanon(void)
+{
+  struct termios settings;
+  int result;
+  result = tcgetattr (STDIN_FILENO, &settings);
+  if (result < 0){
+      perror ("error in tcgetattr");
+      return 0;
+    }
+
+  settings.c_lflag &= ~ICANON;
+
+  result = tcsetattr (STDIN_FILENO, TCSANOW, &settings);
+  if (result < 0){
+      perror ("error in tcsetattr");
+      return 0;
+   }
+  return 1;
+}
+
 int main() {
+    clear_icanon();
+
     SHA256 sha256;
     string st;
     cout << "Enter the string : ";
