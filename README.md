@@ -24,10 +24,10 @@ This will compile the project and generate an executable named `hash`.
 ### Hash a string:
 
 ```bash
-./hash --SHA256 --STRING "hello world"
+./hash --SHA256 "hello world"
 ```
 
-> 💡 No need for quotes if you use a single-word string. Use quotes for multi-word input.
+> No need for quotes if you use a single-word string. Use quotes for multi-word input.
 
 ### Hash a file:
 
@@ -37,7 +37,7 @@ This will compile the project and generate an executable named `hash`.
 
 The hash will be printed to the terminal.
 
-## 🙌 Contributing
+## Contributing
 
 Feel free to contribute by adding new hash algorithms (like SHA1, MD5, etc.).
 
@@ -48,6 +48,6 @@ Feel free to contribute by adding new hash algorithms (like SHA1, MD5, etc.).
 
 We’ll be happy to review your contribution!
 
-## 📄 License
+## License
 
 This project is released under the MIT License.
