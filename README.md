@@ -1,6 +1,6 @@
 # Hash It
 
-A simple C++ command-line utility for computing SHA256 hashes of strings or files. Designed for ease of use and extensibility.
+A simple C++ command-line utility for computing hashes of strings or files. Designed for ease of use and extensibility.
 
 ## Features
 
