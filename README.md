@@ -33,7 +33,7 @@ A simple C++ command-line utility for computing hashes of strings or files. Desi
   </tr>
 </table>
 
-## 🛠️ Build Instructions
+## Build Instructions
 
 Make sure you have a C++17 compatible compiler installed (like `g++`), then run:
 
@@ -43,7 +43,7 @@ make
 
 This will compile the project and generate an executable named `hash`.
 
-## 🧪 Usage
+## Usage
 
 ### Hash a string:
 
