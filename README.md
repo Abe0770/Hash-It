@@ -18,17 +18,17 @@ A simple C++ command-line utility for computing hashes of strings or files. Desi
   </tr>
   <tr>
     <td>SHA-256</td>
-    <td>`--SHA256`</td>
+    <td>--SHA256</td>
     <td>Supported</td>
   </tr>
   <tr>
     <td>SHA-1</td>
-    <td>`--SHA1`</td>
+    <td>--SHA1</td>
     <td>Planned</td>
   </tr>
   <tr>
     <td>SHA-512</td>
-    <td>`--SHA512`</td>
+    <td>--SHA512</td>
     <td>Planned</td>
   </tr>
 </table>
