@@ -4,10 +4,34 @@ A simple C++ command-line utility for computing hashes of strings or files. Desi
 
 ## Features
 
-- Compute SHA256 hash of a **string**
-- Compute SHA256 hash of a **file**
-- Lightweight and modular code
-- Easy to contribute (add new algorithms via pull request)
+- Compute cryptographic hashes of **strings** and **files**
+- Modular structure: easy to plug in new algorithms
+- Lightweight C++ code, built with a `Makefile`
+- Open to contributions
+
+## Available Hashes
+<table>
+  <tr>
+    <th>Algorithm</th>
+    <th>Flag</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td>SHA-256</td>
+    <td>`--SHA256`</td>
+    <td>Supported</td>
+  </tr>
+  <tr>
+    <td>SHA-1</td>
+    <td>`--SHA1`</td>
+    <td>Planned</td>
+  </tr>
+  <tr>
+    <td>SHA-512</td>
+    <td>`--SHA512`</td>
+    <td>Planned</td>
+  </tr>
+</table>
 
 ## 🛠️ Build Instructions
 
