@@ -23,7 +23,7 @@ A simple C++ command-line utility for computing hashes of strings or files. Desi
   <tr>
     <td>SHA-1</td>
     <td>--SHA1</td>
-    <td>Planned</td>
+    <td>Supported</td>
   </tr>
   <tr>
     <td>SHA-512</td>
