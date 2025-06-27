@@ -6,7 +6,6 @@ A simple C++ command-line utility for computing hashes of strings or files. Desi
 
 - Compute cryptographic hashes of **strings** and **files**
 - Modular structure: easy to plug in new algorithms
-- Lightweight C++ code, built with a `Makefile`
 - Open to contributions
 
 ## Available Hashes
