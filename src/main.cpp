@@ -1,4 +1,5 @@
 #include "SHA256.h"
+#include "SHA1.h"
 #include <iostream>
 #include <fstream>
 #include <memory>
@@ -29,14 +30,19 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    string mode = argv[1];
-    if (mode != "--SHA256") {
+    string algoFlag = argv[1];
+    unique_ptr<HashAlgorithm> hasher;
+
+    if (algoFlag == "--SHA256") {
+        hasher = make_unique<SHA256>();
+    } else if (algoFlag == "--SHA1") {
+        hasher = make_unique<SHA1>();
+    } else {
+        cerr << "Unknown algorithm: " << algoFlag << '\n';
         printUsage(argv[0]);
         return 1;
     }
-
-    unique_ptr<HashAlgorithm> hasher = make_unique<SHA256>();
-
+    
     try {
         string input;
         if (argc == 3) {
