@@ -12,7 +12,7 @@ SRCS = $(SRC_DIR)/main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = hash
+TARGET = getHash
 
 all: $(TARGET)
 
