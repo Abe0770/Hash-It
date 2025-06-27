@@ -78,7 +78,7 @@ chmod u+x install.sh
 sudo ./install.sh
 ```
 
-# Uninstalling
+## Uninstalling
 ```
 cd Hash-It
 chmod u+x uninstall.sh
