@@ -48,7 +48,7 @@ This will compile the project and generate an executable named `hash`.
 ### Hash a string:
 
 ```bash
-./hash --SHA256 "hello world"
+./getHash --SHA256 "hello world"
 ```
 
 > No need for quotes if you use a single-word string. Use quotes for multi-word input.
@@ -56,7 +56,7 @@ This will compile the project and generate an executable named `hash`.
 ### Hash a file:
 
 ```bash
-./hash --SHA256 --FILE /path/to/your/file.txt
+./getHash --SHA256 --FILE /path/to/your/file.txt
 ```
 
 The hash will be printed to the terminal.
