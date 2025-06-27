@@ -40,7 +40,7 @@ Make sure you have a C++17 compatible compiler installed (like `g++`), then run:
 make
 ```
 
-This will compile the project and generate an executable named `hash`.
+This will compile the project and generate an executable named `getHash`.
 
 ## Usage
 
