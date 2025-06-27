@@ -6,7 +6,7 @@ SRC_DIR = src
 INCLUDE_DIR = include
 
 SRCS = $(SRC_DIR)/main.cpp \
-	   $(SRC_DIR)/SHA1.cpp \
+       $(SRC_DIR)/SHA1.cpp \
        $(SRC_DIR)/SHA256.cpp \
        $(SRC_DIR)/SHAUtils.cpp \
        $(SRC_DIR)/TerminalUtils.cpp
