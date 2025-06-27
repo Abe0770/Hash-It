@@ -60,6 +60,31 @@ This will compile the project and generate an executable named `hash`.
 
 The hash will be printed to the terminal.
 
+# Installing and requirements (DEBIAN)
+<p>Installation of HashIt requires root permissions.</p>
+<p>Required dependencies - git<br> 
+if git is not installed use</p>
+
+```
+sudo apt-get install git -y
+```
+to install git.
+
+## Installing (Debian/Termux):
+```
+git clone https://github.com/Abe0770/HashIt.git
+cd HashIt
+chmod u+x install.sh
+sudo ./install.sh
+```
+
+# Uninstalling
+```
+cd HashIt
+chmod u+x uninstall.sh
+sudo ./uninstall.sh
+```
+
 ## Contributing
 
 Feel free to contribute by adding new hash algorithms (like SHA1, MD5, etc.).
