@@ -40,12 +40,4 @@ namespace sha_utils {
 
         return bin;
     }
-
-    unsigned long long toULL(const string& str) {
-        return std::bitset<64>(str).to_ullong();
-    }
-
-    unsigned long long rotateLeft(unsigned long long value, int bits) {
-        return ((value << bits) | (value >> (64 - bits)));
-    }
 }
